@@ -19,7 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // todo api's
-Route::get('/todos', 'TodoController@index');
-Route::post('/todos', 'TodoController@Store');
-Route::post('/todos/{todo}', 'TodoController@update');
-Route::post('/todos/delete/{todo}', 'TodoController@destroy');
+Route::get('/todos', 'TodoController@index'); //all todo item list
+Route::post('/todos', 'TodoController@Store'); //create a new todo item
+Route::post('/todos/{todo}', 'TodoController@update'); //edit an existing todo item
+Route::post('/todos/delete/{todo}', 'TodoController@destroy'); //delete a todo item
+Route::get('/todos/completed', 'TodoController@completed'); //list of all completed todo item
+Route::get('/todos/undone', 'TodoController@undone'); //list of all completed todo item

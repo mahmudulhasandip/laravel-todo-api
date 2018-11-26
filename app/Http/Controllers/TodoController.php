@@ -17,8 +17,21 @@ class TodoController extends Controller
         return Todo::all();
     }
 
+    // all completed
+    public function completed(){
+        $todos = Todo::where('completed', 1)->get();
+        return response($todos, 200);
+    }
+
+    // undone
+    public function undone(){
+        $todos = Todo::where('completed', 0)->get();
+        return response($todos, 200);
+    }
 
 
+
+    // create a new todo item
     /**
      * Store a newly created resource in storage.
      *
@@ -42,16 +55,7 @@ class TodoController extends Controller
 
 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Todo  $todo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Todo $todo)
-    {
-        //
-    }
+    // Update a todo item
 
     /**
      * Update the specified resource in storage.
@@ -74,6 +78,8 @@ class TodoController extends Controller
         return response($todo, 200);
     }
 
+
+    // delete a todo item
     /**
      * Remove the specified resource from storage.
      *
